@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 
 const Signup = () => {
@@ -42,8 +42,8 @@ const Signup = () => {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:3000/signup",
+      const { data } = await api.post(
+        "/api/auth/signup",
         inputValue,
         { withCredentials: true }
       );
@@ -52,6 +52,12 @@ const Signup = () => {
 
       if (success) {
         handleSuccess(message);
+        setInputValue({
+          name: "",
+          username: "",
+          email: "",
+          password: "",
+        });
         setTimeout(() => {
           navigate("/login");
         }, 1000);
@@ -63,88 +69,98 @@ const Signup = () => {
       handleError("Signup failed");
     }
 
-    setInputValue({
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-    });
   };
 
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-7 p-5">
-          <img src="/images/signup.png" alt="Signup" className="img-fluid" />
+    <section className="signup-section" id="signup-form">
+      <div className="container">
+      <div className="signup-layout">
+        <div className="signup-visual">
+          <div className="signup-visual-copy">
+            <span className="hero-kicker">Start with clarity</span>
+            <h2>Your money deserves a better interface.</h2>
+            <p>One calm workspace for your first investment and every decision after it.</p>
+          </div>
+          <img src="/images/signup.png" alt="EquiTrade account setup on mobile" className="signup-image" />
+          <div className="signup-proof-row">
+            <span><strong>₹0</strong> account opening</span>
+            <span><strong>24/7</strong> access</span>
+          </div>
         </div>
-        <div className="col-5 p-5">
-          <h1 className="mb-4 mt-3">Signup Now</h1>
+        <div className="signup-card">
+          <div className="section-eyebrow">Create your account</div>
+          <h1 className="mb-2">Make your first move</h1>
+          <p className="signup-card-copy">Join EquiTrade in a few minutes. No paperwork maze, no noisy upsells.</p>
           <form onSubmit={handleSubmit}>
-            <div
-              className="form-row align-items-center"
-              style={{ width: "90%" }}
-            >
-              <div className="my-3">
+            <div className="signup-form-grid">
+              <div className="signup-field">
                 <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   name="name"
                   className="form-control"
                   id="name"
-                  placeholder="Name"
+                  placeholder="Your full name"
+                  autoComplete="name"
+                  required
                   value={name}
                   onChange={handleOnChange}
                 />
               </div>
 
-              <div className="my-3">
+              <div className="signup-field">
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
                   name="username"
                   className="form-control"
                   id="username"
-                  placeholder="Username"
+                  placeholder="Choose a username"
+                  autoComplete="username"
+                  required
                   value={username}
                   onChange={handleOnChange}
                 />
               </div>
 
-              <div className="my-3">
+              <div className="signup-field signup-field-wide">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
                   className="form-control"
                   id="email"
-                  placeholder="Email"
+                  placeholder="you@example.com"
+                  autoComplete="email"
+                  required
                   value={email}
                   onChange={handleOnChange}
                 />
               </div>
 
-              <div className="my-3">
+              <div className="signup-field signup-field-wide">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
                   name="password"
                   className="form-control"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Create a secure password"
+                  autoComplete="new-password"
+                  minLength="8"
+                  required
                   value={password}
                   onChange={handleOnChange}
                 />
               </div>
 
-              <div className="col-auto">
-                <p className="mt-3 mb-2">
-                  <Link to="/login" style={{ textDecoration: "none" }}>
-                    Already have an account?
-                  </Link>
+              <div className="signup-submit-row">
+                <p className="signup-login-prompt">
+                  Already have an account? <Link to="/login">Log in</Link>
                 </p>
-                <button type="submit" className="btn btn-primary">
-                  Submit
+                <button type="submit" className="btn btn-primary site-cta signup-submit">
+                  Create account <span aria-hidden="true">→</span>
                 </button>
               </div>
             </div>
@@ -152,7 +168,8 @@ const Signup = () => {
           <ToastContainer />
         </div>
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

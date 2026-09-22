@@ -1,128 +1,85 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer style={{ backgroundColor: "rgb(245, 245, 245)" }}>
-      <div className="container border-top pt-5">
-        {/* Top Footer Content */}
-        <div className="row text-start">
-          {/* Logo + Info */}
-          <div className="col-lg-3 mb-4">
-            <img
-              src="images/logo.svg"
-              style={{ width: "150px" }}
-              alt="Logo"
-              className="mb-3"
-            />
-            <p className="text-muted small">
-              &copy; 2010 - 2024, Not Zerodha Broking Ltd. <br />
-              All rights reserved.
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-topline">
+          <span className="section-eyebrow">Invest with intention</span>
+          <span className="footer-topline-text">Clear tools. Thoughtful decisions.</span>
+        </div>
+
+        <div className="row text-start footer-columns">
+          <div className="col-lg-4 mb-4">
+            <Link className="brand-lockup mb-3" to="/" aria-label="EquiTrade home">
+              <span className="brand-mark" aria-hidden="true">
+                <span className="brand-bar brand-bar-one" />
+                <span className="brand-bar brand-bar-two" />
+                <span className="brand-bar brand-bar-three" />
+                <span className="brand-arrow" />
+              </span>
+              <span>Equi<strong>Trade</strong></span>
+            </Link>
+            <p className="footer-brand-copy">
+              A simpler way to discover, understand, and manage your investments.
             </p>
 
-            {/* Social Media Icons */}
-            <div className="d-flex gap-3 mt-3">
-              <a href="#" className="text-dark fs-5 footer-link">
-                <i className="bi bi-facebook"></i>
-              </a>
-              <a href="#" className="text-dark fs-5 footer-link">
-                <i className="bi bi-twitter"></i>
-              </a>
-              <a href="#" className="text-dark fs-5 footer-link">
+            <div className="d-flex gap-3 mt-4">
+              <a href="https://www.linkedin.com" aria-label="EquiTrade on LinkedIn" className="footer-social-link">
                 <i className="bi bi-linkedin"></i>
               </a>
-              <a href="#" className="text-dark fs-5 footer-link">
+              <a href="https://twitter.com" aria-label="EquiTrade on X" className="footer-social-link">
+                <i className="bi bi-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com" aria-label="EquiTrade on LinkedIn" className="footer-social-link">
+                <i className="bi bi-linkedin"></i>
+              </a>
+              <a href="https://www.instagram.com" aria-label="EquiTrade on Instagram" className="footer-social-link">
                 <i className="bi bi-instagram"></i>
               </a>
             </div>
           </div>
 
-          {/* Company Links */}
-          <div className="col-lg-3 mb-4">
-            <h6 className="fw-bold mb-3">Company</h6>
+          <div className="col-6 col-lg-2 mb-4">
+            <h6 className="footer-heading">Explore</h6>
             <ul className="list-unstyled">
-              <li><a href="#" className="footer-link">About</a></li>
-              <li><a href="#" className="footer-link">Products</a></li>
-              <li><a href="#" className="footer-link">Pricing</a></li>
-              <li><a href="#" className="footer-link">Referral programme</a></li>
-              <li><a href="#" className="footer-link">Careers</a></li>
-              <li><a href="#" className="footer-link">Zerodha.tech</a></li>
-              <li><a href="#" className="footer-link">Press & media</a></li>
-              <li><a href="#" className="footer-link">CSR</a></li>
+              <li><Link to="/about" className="footer-link">About EquiTrade</Link></li>
+              <li><Link to="/products" className="footer-link">Our platform</Link></li>
+              <li><Link to="/pricing" className="footer-link">Pricing</Link></li>
             </ul>
           </div>
 
-          {/* Support Links */}
-          <div className="col-lg-3 mb-4">
-            <h6 className="fw-bold mb-3">Support</h6>
+          <div className="col-6 col-lg-2 mb-4">
+            <h6 className="footer-heading">Resources</h6>
             <ul className="list-unstyled">
-              <li><a href="#" className="footer-link">Contact</a></li>
-              <li><a href="#" className="footer-link">Support portal</a></li>
-              <li><a href="#" className="footer-link">Z-Connect blog</a></li>
-              <li><a href="#" className="footer-link">List of charges</a></li>
-              <li><a href="#" className="footer-link">Downloads & resources</a></li>
+              <li><Link to="/support" className="footer-link">Help centre</Link></li>
+              <li><Link to="/support" className="footer-link">Contact support</Link></li>
+              <li><Link to="/signup" className="footer-link">Open an account</Link></li>
             </ul>
           </div>
 
-          {/* Account Links */}
-          <div className="col-lg-3 mb-4">
-            <h6 className="fw-bold mb-3">Account</h6>
-            <ul className="list-unstyled">
-              <li><a href="#" className="footer-link">Open an account</a></li>
-              <li><a href="#" className="footer-link">Fund transfer</a></li>
-              <li><a href="#" className="footer-link">60 day challenge</a></li>
-            </ul>
+          <div className="col-lg-4 mb-4">
+            <div className="footer-contact-card">
+              <span className="footer-contact-label">Need a hand?</span>
+              <h6>We are here to help you move forward.</h6>
+              <Link to="/support" className="footer-contact-link">Visit the help centre <span aria-hidden="true">→</span></Link>
+            </div>
           </div>
         </div>
 
-        {/* Disclaimer Section */}
-        <div
-          className="mt-5 text-muted"
-          style={{
-            fontSize: "14px",
-            lineHeight: "1.7",
-            borderTop: "1px solid #ddd",
-            paddingTop: "20px",
-          }}
-        >
+        <div className="footer-disclaimer">
+          <p><strong>Important information:</strong> EquiTrade is an educational and investment technology platform. Investing in financial markets involves risk, and past performance does not guarantee future results.</p>
           <p>
-            Zerodha Broking Ltd.: Member of NSE & BSE – SEBI Registration no.:
-            INZ000031633 CDSL: Depository services through Zerodha Securities
-            Pvt. Ltd. – SEBI Registration no.: IN-DP-100-2015 Commodity Trading
-            through Zerodha Commodities Pvt. Ltd. MCX: 46025 – SEBI Registration
-            no.: INZ000038238 Registered Address: Zerodha Broking Ltd.,
-            #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public School,
-            J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India.
+            Please review all relevant documents carefully and consider your financial objectives and risk tolerance before investing. EquiTrade does not provide personalised financial advice.
           </p>
-          <p>
-            Procedure to file a complaint on SEBI SCORES: Register on SCORES
-            portal. Mandatory details for filing complaints on SCORES: Name, PAN,
-            Address, Mobile Number, E-mail ID.
-          </p>
-          <p>
-            Investments in securities market are subject to market risks; read
-            all the related documents carefully before investing.
-          </p>
-          <p>
-            Prevent unauthorised transactions in your account. Update your
-            mobile numbers/email IDs with your stock brokers. Receive
-            information of your transactions directly from Exchange on your
-            mobile/email at the end of the day.
-          </p>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2026 EquiTrade. All rights reserved.</span>
+          <span>Privacy · Terms · Risk disclosure</span>
         </div>
       </div>
 
-      {/* Custom Styles for Hover */}
-      <style jsx>{`
-        .footer-link {
-          color: #333;
-          text-decoration: none;
-          transition: color 0.3s, text-decoration 0.3s;
-        }
-        .footer-link:hover {
-          color: #0d6efd; /* Bootstrap primary */
-          text-decoration: underline;
-        }
-      `}</style>
     </footer>
   );
 }

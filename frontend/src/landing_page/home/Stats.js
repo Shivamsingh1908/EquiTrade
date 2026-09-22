@@ -2,9 +2,10 @@ import React from "react";
 
 function Stats() {
   return (
-    <div className="container p-3">
-      <div className="row p-5">
-        <div className="col-6 p-5">
+    <section className="container section-space">
+      <div className="row align-items-center">
+        <div className="col-lg-6 p-4 p-lg-5">
+          <div className="section-eyebrow">The EquiTrade difference</div>
           <h1 className="fs-2 mb-5">Trust with confidence</h1>
           <h2 className="fs-4">Customer-first always</h2>
           <p className="text-muted">
@@ -28,8 +29,9 @@ function Stats() {
             money.
           </p>
         </div>
-        <div className="col-6 p-5">
-          <img src="images/ecosystem.png" style={{ width: "90%" }} />
+        <div className="col-lg-6 p-4 p-lg-5">
+          <div className="soft-panel">
+          <img src="images/ecosystem.png" className="img-fluid" alt="EquiTrade product ecosystem" />
           <div className="text-center">
             <a href="" className="mx-5" style={{ textDecoration: "none" }}>
               Explore our products{" "}
@@ -40,9 +42,10 @@ function Stats() {
               <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

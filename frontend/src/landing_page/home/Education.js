@@ -2,12 +2,13 @@ import React from "react";
 
 function Education() {
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-6">
-          <img src="images/education.svg" style={{ width: "70%" }} />
+    <section className="container section-space">
+      <div className="row align-items-center">
+        <div className="col-lg-6 mb-4 mb-lg-0">
+          <img className="img-fluid" src="images/education.svg" alt="Market education illustration" />
         </div>
-        <div className="col-6">
+        <div className="col-lg-6">
+          <div className="section-eyebrow">Learn before you leap</div>
           <h1 className="mb-3 fs-2">Free and open market education</h1>
           <p>
             Varsity, the largest online stock market education book in the world
@@ -25,7 +26,7 @@ function Education() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

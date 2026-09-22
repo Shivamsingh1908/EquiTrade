@@ -2,18 +2,11 @@ import React from "react";
 
 function Hero() {
   return (
-    <section
-      className="container-fluid d-flex flex-column justify-content-center align-items-center text-center py-5"
-      style={{
-        background: "linear-gradient(135deg, #007bff, #6610f2)",
-        minHeight: "90vh",
-        color: "white",
-      }}
-      id="supportHero"
-    >
+    <section className="support-hero" id="supportHero">
       {/* Title */}
-      <h1 className="fw-bold display-5 mb-3">Support Portal</h1>
-      <p className="lead mb-4">
+      <div className="hero-kicker">Here when you need us</div>
+      <h1 className="route-hero-title">Find your next answer faster.</h1>
+      <p className="route-hero-copy">
         Search for an answer or browse help topics to create a ticket
       </p>
 
@@ -31,7 +24,7 @@ function Hero() {
       </div>
 
       {/* Info Cards */}
-      <div className="row w-100 justify-content-center px-3">
+      <div className="row support-card-grid w-100 justify-content-center px-3">
         {/* Card 1 */}
         <div className="col-md-3 col-sm-6 mb-4">
           <div className="card shadow-lg border-0 h-100">

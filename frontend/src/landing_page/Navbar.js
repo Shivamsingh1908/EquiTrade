@@ -3,19 +3,16 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav
-      className="navbar navbar-expand-lg shadow-sm border-bottom"
-      style={{ backgroundColor: "#fff" }}
-    >
-      <div className="container py-3">
-        {/* Brand / Logo */}
-        <Link className="navbar-brand fw-bold fs-4" to="/">
-          <img
-            src="images/logo.svg"
-            className="img-fluid"
-            style={{ maxWidth: "300px" }}
-            alt="Logo"
-          />
+    <nav className="navbar navbar-expand-lg site-navbar">
+      <div className="container py-2">
+        <Link className="brand-lockup" to="/" aria-label="EquiTrade home">
+          <span className="brand-mark" aria-hidden="true">
+            <span className="brand-bar brand-bar-one" />
+            <span className="brand-bar brand-bar-two" />
+            <span className="brand-bar brand-bar-three" />
+            <span className="brand-arrow" />
+          </span>
+          <span>Equi<strong>Trade</strong></span>
         </Link>
 
         {/* Toggler Button for Mobile */}
@@ -35,28 +32,28 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto align-items-center">
             <li className="nav-item px-3">
-              <Link className="nav-link fs-5" to="/about">
+              <Link className="nav-link site-nav-link" to="/about">
                 About
               </Link>
             </li>
             <li className="nav-item px-3">
-              <Link className="nav-link fs-5" to="/product">
+              <Link className="nav-link site-nav-link" to="/products">
                 Product
               </Link>
             </li>
             <li className="nav-item px-3">
-              <Link className="nav-link fs-5" to="/pricing">
+              <Link className="nav-link site-nav-link" to="/pricing">
                 Pricing
               </Link>
             </li>
             <li className="nav-item px-3">
-              <Link className="nav-link fs-5" to="/support">
+              <Link className="nav-link site-nav-link" to="/support">
                 Support
               </Link>
             </li>
             <li className="nav-item ms-3">
               <Link
-                className="btn btn-primary fs-6 fw-semibold px-4 py-2 rounded-pill shadow-sm"
+                className="btn btn-primary site-cta px-4 py-2"
                 to="/signup"
               >
                 Signup

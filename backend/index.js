@@ -5,6 +5,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const authRoute = require("./AuthRoute");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
@@ -16,8 +18,15 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+app.get("/health", (req, res) => {
+  res.json({ ok: true, database: mongoose.connection.readyState === 1 });
+});
+
+app.use("/api/auth", authRoute);
 
 
 
@@ -32,20 +41,30 @@ app.get("/allPositions", async (req, res) => {
 });
 
 app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
-  });
+  try {
+    const newOrder = await OrdersModel.create({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
 
-  newOrder.save();
-
-  res.send("Order saved!");
+    res.status(201).json(newOrder);
+  } catch (error) {
+    console.error("Order creation failed:", error);
+    res.status(500).json({ message: "Unable to save order" });
+  }
 });
 
-app.listen(3002, () => {
-  console.log("App started!");
-  mongoose.connect(uri);
-  console.log("DB started!");
-});
+async function startServer() {
+  try {
+    if (!uri) throw new Error("MONGO_URL is not configured");
+    await mongoose.connect(uri);
+    app.listen(PORT, () => console.log(`API started on port ${PORT}`));
+  } catch (error) {
+    console.error("Database connection failed:", error.message);
+    process.exitCode = 1;
+  }
+}
+
+startServer();
